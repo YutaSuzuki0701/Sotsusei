@@ -42,17 +42,20 @@
 	</nav>
 
 
-	<div class="product-item">
 
-		<a href="/kounyu"><img src="../image/syouhin.png" alt="商品"
-			width="1300" height="300" border="0"></a>
-		<th:block th:each="result : ${selectResult}">
-			<p th:text="${result.product_name}"></p>
-			<p th:text="${result.price} + '円'"></p>
-			<img th:src="${'data:image/png;base64,' + result.photograph}">
-			<hr>
-		</th:block>
-	</div>
+
+		<!-- 商品一覧 -->
+<div class="product-container">
+    <th:block th:each="result : ${selectResult}">
+        <div class="product-item">
+            <p th:text="${result.product_name}"></p>
+            <p th:text="${result.price} + '円'"></p>
+            <img th:src="${'data:image/png;base64,' + result.photograph}" alt="商品画像">
+            <hr>
+        </div>
+    </th:block>
+</div>
+
 
 
 </body>

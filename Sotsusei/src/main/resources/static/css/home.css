@@ -5,6 +5,12 @@ html, body, h1, h2, p, main, header, ul, li, footer, section {
 	padding: 0;
 }
 
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
 .float_search {
 	float: left; /* 横並びにする */
 	margin-left: 100px; /* 要素と要素の間を開ける */
@@ -64,10 +70,30 @@ nav a {
 	color: #333;
 }
 
+.product-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 20px;
+}
+
 .product-item {
-	width: 30%; /* 3列に配置するための幅を設定 */
+	width: calc(30% - 20px); /* 3列に配置するための幅を設定（マージンを考慮） */
 	margin-bottom: 20px;
 	box-sizing: border-box;
 	border: 1px solid #ddd;
 	padding: 10px;
+}
+
+.product-item img {
+	max-width: 100%;
+	height: auto;
+}
+
+.product-item h3 {
+	margin-top: 0;
+}
+
+.product-item p {
+	color: #666;
 }
