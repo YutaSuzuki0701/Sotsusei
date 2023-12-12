@@ -1,0 +1,15 @@
+<!-- 商品詳細 -->
+<div class="product-details-container">
+    <h2 th:text="${productDetails.product_name}"></h2>
+    <p th:text="${productDetails.category}"></p>
+    <p th:text="${productDetails.price} + '円'"></p>
+    <p th:text="${productDetails.product_condition}"></p>
+    <p th:text="${productDetails.description}"></p>
+    <!-- 他の商品詳細情報も同様に表示 -->
+
+    <!-- 商品画像 -->
+    <img th:src="${'data:image/png;base64,' + productDetails.photograph}" alt="商品画像">
+
+    <!-- 戻るボタン -->
+    <a href="/product/list">戻る</a>
+</div>
