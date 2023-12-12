@@ -78,22 +78,26 @@ nav a {
 }
 
 .product-item {
-	width: calc(30% - 20px); /* 3列に配置するための幅を設定（マージンを考慮） */
+	width: calc(16.6667% - 10px); /* 3列に配置するための幅を設定（マージンを考慮） */
 	margin-bottom: 20px;
 	box-sizing: border-box;
 	border: 1px solid #ddd;
 	padding: 10px;
+	text-align: center; /* 中央揃え */
 }
 
 .product-item img {
 	max-width: 100%;
 	height: auto;
+	margin-bottom: 10px; /* 画像とテキストの間に余白を追加 */
 }
 
 .product-item h3 {
 	margin-top: 0;
+	color: #333; /* 商品名のテキストカラー */
 }
 
 .product-item p {
 	color: #666;
+	margin: 0; /* 余白を削除 */
 }

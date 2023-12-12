@@ -44,18 +44,19 @@
 
 
 
-		<!-- 商品一覧 -->
+<!-- 商品一覧 -->
 <div class="product-container">
     <th:block th:each="result : ${selectResult}">
         <div class="product-item">
-            <p th:text="${result.product_name}"></p>
-            <p th:text="${result.price} + '円'"></p>
-            <img th:src="${'data:image/png;base64,' + result.photograph}" alt="商品画像">
-            <hr>
+
+                <img th:src="${'data:image/png;base64,' + result.photograph}" alt="商品画像">
+                <h3 th:text="${result.product_name}"></h3>
+                <p th:text="${result.price} + '円'"></p>
+                <a th:href="@{'/product/details/' + ${result.item_number}}" style="color: blue;">商品詳細</a>
+
         </div>
     </th:block>
 </div>
-
 
 
 </body>
