@@ -21,13 +21,14 @@ public class HomeController {
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
 
-		List<Map<String,Object>>resultList;
+		List<Map<String, Object>> resultList;
 
 		resultList = jdbcTemplate.queryForList("select * from merchandise");
 
-		model.addAttribute("selectResult",resultList);
+		model.addAttribute("selectResult", resultList);
 		return "home";
 	}
+
 	@RequestMapping(path = "/profile", method = RequestMethod.GET)
 	public String profile() {
 		return "profile";
@@ -42,27 +43,26 @@ public class HomeController {
 	public String osusume() {
 		return "osusume";
 	}
+
 	@RequestMapping(path = "/ninki", method = RequestMethod.GET)
 	public String ninki() {
 		return "ninki";
 	}
+
 	@RequestMapping(path = "/all", method = RequestMethod.GET)
 	public String all() {
 		return "all";
 	}
 
-	  // 新しく追加されたメソッド
-    @RequestMapping(path = "/product/details/{item_number}", method = RequestMethod.GET)
-    public String productDetails(Model model, @PathVariable("item_number") int item_number) {
-        // 商品詳細を取得する処理を追加する（適切なメソッドを使用してデータベースから商品詳細を取得）
-        // 以下はダミーコードで、実際の処理に合わせて変更が必要
-        Map<String, Object> productDetails = jdbcTemplate.queryForMap("select * from merchandise where item_number = ?", item_number);
-        model.addAttribute("productDetails", productDetails);
-        return "product-details";
-    }
-
-
-
-
+	// 新しく追加されたメソッド
+	@RequestMapping(path = "/product/details/{item_number}", method = RequestMethod.GET)
+	public String productDetails(Model model, @PathVariable("item_number") int item_number) {
+		// 商品詳細を取得する処理を追加する（適切なメソッドを使用してデータベースから商品詳細を取得）
+		// 以下はダミーコードで、実際の処理に合わせて変更が必要
+		Map<String, Object> productDetails = jdbcTemplate.queryForMap("select * from merchandise where item_number = ?",
+				item_number);
+		model.addAttribute("productDetails", productDetails);
+		return "product-details";
+	}
 
 }
