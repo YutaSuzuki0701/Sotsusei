@@ -127,8 +127,8 @@ p {
 			<p class="condition" th:text="${productDetails.product_condition}"></p>
 			<h1>商品について</h1>
 			<p class="description" th:text="${productDetails.description}"></p>
-			<form action="/product" method="post" enctype="multipart/form-data">
-				<button class="buy-button">購入手続きへ</button>
+			<form th:action="@{'/product/purchase/' + ${productDetails.item_number}}" method="post" enctype="multipart/form-data">
+			<button class="buy-button">購入手続きへ</button>
 			</form>
 			<span>&nbsp;</span>
 			<!-- 空白を追加 -->
