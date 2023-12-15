@@ -6,20 +6,7 @@
 <body>
 
 
-	<div class="container">
-		<div class="product-info">
-			<h1>商品名</h1>
-			<h2 th:text="${#session.product_name}"></h2>
 
-			<div class="price">
-				<p class="price" th:text="${#session.price} + '円'"></p>
-			</div>
-
-			<form action="/purchase/{item_number}" method="post">
-				<button class="buy-button" type="submit">購入する</button>
-			</form>
-		</div>
-	</div>
 
 
 </body>

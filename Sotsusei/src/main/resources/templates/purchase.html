@@ -1,12 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>HOME</title>
-<link rel="stylesheet" type="text/css" href="/css/home.css" />
-</head>
-<body>
-	<h1>確認完了</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchase</title>
+<!-- Add any other necessary headers or styles here -->
 
+<style>
+body {
+	font-family: 'Arial', sans-serif;
+	/* Specify a common font for better consistency */
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px;
+}
+
+.product-info {
+	width: 45%;
+	text-align: left;
+	padding-right: 20px; /* Add some spacing between image and text */
+}
+
+.product-info img {
+	max-width: 100%; /* Ensure the image doesn't exceed its container */
+	height: auto; /* Maintain aspect ratio */
+}
+
+.price-info {
+	width: 45%;
+	text-align: right;
+}
+
+.price {
+	font-size: 24px; /* Increase font size for better visibility */
+	color: green;
+	margin-bottom: 10px; /* Add some space between price and button */
+}
+
+.buy-button {
+	padding: 12px 20px; /* Increase padding for a larger button */
+	background-color: blue;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 16px; /* Adjust font size for better readability */
+}
+.product-info img {
+    max-width: 80%; /* 画像の幅を80%に制限 */
+    height: auto; /* 高さは自動調整（アスペクト比を保持）*/
+}
+
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="product-info">
+			<img th:src="${'data:image/png;base64,' + productDetails.photograph}"
+				alt="商品画像">
+			<p th:text="${productDetails.product_name}"></p>
+		</div>
+
+		<div class="price-info">
+			<div class="price" th:text="${productDetails.price} + '円'"></div>
+			<button class="buy-button">購入する</button>
+		</div>
+	</div>
 </body>
+
 </html>
