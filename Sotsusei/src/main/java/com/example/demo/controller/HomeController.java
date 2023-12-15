@@ -33,7 +33,6 @@ public class HomeController {
 		return "profile";
 	}
 
-
 	@RequestMapping(path = "/osusume", method = RequestMethod.GET)
 	public String osusume() {
 		return "osusume";
