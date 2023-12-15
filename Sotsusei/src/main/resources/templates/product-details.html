@@ -127,9 +127,12 @@ p {
 			<p class="condition" th:text="${productDetails.product_condition}"></p>
 			<h1>商品について</h1>
 			<p class="description" th:text="${productDetails.description}"></p>
-				<a th:href="@{'/product/purchase/' + ${productDetails.item_number}}">
-				<button class="buy-button" type="submit">購入手続きへ</button>
-				</a>
+
+			<form
+				th:action="@{'/product/purchase/' + ${productDetails.item_number}}"
+				method="post" enctype="multipart/form-data">
+				<button class="buy-button">購入手続きへ</button>
+			</form>
 			<span>&nbsp;</span>
 			<!-- 空白を追加 -->
 			<button class="back-button" onclick="history.go(-1)">戻る</button>

@@ -47,5 +47,4 @@ public class HomeController {
 	public String all() {
 		return "all";
 	}
-
 }
