@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Purchase</title>
-<!-- Add any other necessary headers or styles here -->
 
 <style>
 body {
 	font-family: 'Arial', sans-serif;
-	/* Specify a common font for better consistency */
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -18,62 +15,63 @@ body {
 
 .container {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	margin: 20px;
 }
 
 .product-info {
-	width: 45%;
-	text-align: left;
-	padding-right: 20px; /* Add some spacing between image and text */
+	text-align: center;
+	padding-right: 20px;
 }
 
 .product-info img {
-	max-width: 100%; /* Ensure the image doesn't exceed its container */
-	height: auto; /* Maintain aspect ratio */
+	max-width: 100%;
+	height: auto;
 }
 
 .price-info {
-	width: 45%;
-	text-align: right;
+	text-align: left;
 }
 
 .price {
-	font-size: 24px; /* Increase font size for better visibility */
+	font-size: 24px;
 	color: green;
-	margin-bottom: 10px; /* Add some space between price and button */
+	margin-bottom: 10px;
 }
 
 .buy-button {
-	padding: 12px 20px; /* Increase padding for a larger button */
+	padding: 12px 20px;
 	background-color: blue;
 	color: white;
 	border: none;
 	cursor: pointer;
-	font-size: 16px; /* Adjust font size for better readability */
+	font-size: 16px;
 }
-.product-info img {
-    max-width: 80%; /* 画像の幅を80%に制限 */
-    height: auto; /* 高さは自動調整（アスペクト比を保持）*/
-}
-
 </style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="product-info">
-			<img th:src="${'data:image/png;base64,' + productDetails.photograph}"
-				alt="商品画像">
-			<p th:text="${productDetails.product_name}"></p>
+	<title>購入の確認</title>
+	<h1>購入の確認</h1>
+	<hr>
+	<form action="/purchase" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="item_number"
+			th:value="${productDetails.item_number}" />
+		<div class="container">
+			<div class="product-info">
+				<img
+					th:src="${'data:image/png;base64,' + productDetails.photograph}"
+					alt="商品画像">
+			</div>
+			<div class="price-info">
+				<p th:text="${productDetails.product_name}"></p>
+				<hr>
+				<div class="price" th:text="${productDetails.price} + '円'"></div>
+				<button type="submit" class="buy-button">購入する</button>
+			</div>
 		</div>
+	</form>
 
-		<div class="price-info">
-			<div class="price" th:text="${productDetails.price} + '円'"></div>
-			<button class="buy-button">購入する</button>
-		</div>
-	</div>
 </body>
 
 </html>

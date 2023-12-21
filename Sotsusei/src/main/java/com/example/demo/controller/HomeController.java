@@ -22,7 +22,7 @@ public class HomeController {
 
 		List<Map<String, Object>> resultList;
 
-		resultList = jdbcTemplate.queryForList("select * from merchandise");
+		resultList = jdbcTemplate.queryForList("select * from merchandise WHERE date_purchased IS NULL");
 
 		model.addAttribute("selectResult", resultList);
 		return "home";
