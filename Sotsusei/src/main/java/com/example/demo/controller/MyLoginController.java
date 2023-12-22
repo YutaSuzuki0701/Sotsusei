@@ -52,7 +52,7 @@ public class MyLoginController {
 	}
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String login( String pass,String id, String name, HttpSession session) {
+	public String login( String pass,int id, String name, HttpSession session) {
 
 		List<Map<String, Object>> resultList = jdbcTemplate
 				.queryForList("SELECT * FROM member WHERE password = ? and id = ? ", pass, id);
@@ -60,6 +60,9 @@ public class MyLoginController {
 
 			name = (String) resultList.get(0).get("name");
 			session.setAttribute("name", name);
+
+			id = (int) resultList.get(0).get("id");
+			session.setAttribute("id", id);
 
 			return "redirect:/home";
 		} else

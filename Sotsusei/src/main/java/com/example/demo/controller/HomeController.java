@@ -28,11 +28,6 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(path = "/profile", method = RequestMethod.GET)
-	public String profile() {
-		return "profile";
-	}
-
 	@RequestMapping(path = "/osusume", method = RequestMethod.GET)
 	public String osusume() {
 		return "osusume";
