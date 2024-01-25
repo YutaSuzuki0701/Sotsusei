@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,Initial-scale=1.0">
+<title>ユーザー ダッシュボード</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="container">
+		<h2>ユーザー ダッシュボード</h2>
+
+		<!-- 名前変更フォーム -->
+		<div class="section">
+			<h3>名前変更</h3>
+			<form action="/update_name" method="post">
+				<label for="newName">新しい名前:</label> <input type="text" id="newName"
+					name="newName" required>
+				<button type="submit">変更</button>
+			</form>
+		</div>
+
+		<h2>出品履歴</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>価格</th>
+					<th>出品日</th>
+					<th>取引状況</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="listing : ${listingHistory}">
+					<td th:text="${listing['product_name']}"></td>
+					<td th:text="${listing['price']}"></td>
+					<td th:text="${listing['date_listed']}"></td>
+					<td><span th:if="${listing['transaction_status'] == '未売却'}">
+							<a
+							th:href="@{/edit/{itemNumber}(itemNumber=${listing['item_number']})}"
+							th:if="${listing['transaction_status'] == '未売却'}">未売却</a>
+					</span> <span th:if="${listing['transaction_status'] != '未売却'}"
+						th:text="${listing['transaction_status']}"></span></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+		<h2>購入履歴</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>価格</th>
+					<th>購入日</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="purchase : ${purchaseHistory}">
+					<td th:text="${purchase['product_name']}"></td>
+					<td th:text="${purchase['price']}"></td>
+					<td th:text="${purchase['date_purchased']}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

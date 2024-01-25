@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HOME</title>
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+</head>
+<body>
+	<div class="float_search">
+		<form action="" method="get">
+			<input type="text" size="40" name="query" placeholder="キーワードを入力">
+			<input type="submit" value="検索">
+		</form>
+	</div>
+	<p>
+	<div class="float_icon">
+		<a href="profile" target="_blank"> <img src="../image/icon.png"
+			alt="プロフィール" width="45" height="37.5" border="0">
+		</a>
+	</div>
+	</p>
+
+	<div th:text="${session.name}" class="float_name"></div>
+
+	<p>
+	<div class="float_listing">
+
+		<a href="/listing">出品</a>
+
+	</div>
+	</p>
+	<hr>
+
+
+		<nav>
+			<ul>
+				<li><a class=”current” href="/home">Home</a></li>
+				<li><a href="/osusume">おすすめ</a></li>
+				<li><a href="/ninki">人気</a></li>
+				<li><a href="/all">全てみる</a></li>
+			</ul>
+		</nav>
+
+
+
+
+
+			<a href = "/ninki"><img src="../image/ninki.png" alt="商品" width="1300" height="300"
+			border="0"></a>
+
+
+</body>
+</html>

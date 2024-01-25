@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HOME</title>
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+</head>
+<body>
+	<div class="float_search">
+		<form action="/search" method="get">
+			<input type="text" size="40" name="query" placeholder="キーワードを入力"
+				th:value="${param.query}"> <input type="submit" value="検索">
+		</form>
+	</div>
+	<p>
+	<div class="float_icon">
+		<a href="profile" target="_blank"> <img src="../image/icon.png"
+			alt="プロフィール" width="45" height="37.5" border="0">
+		</a>
+	</div>
+	</p>
+
+	<div th:text="${session.name}" class="float_name"></div>
+
+	<p>
+	<div class="float_listing">
+		<a href="/listing">出品</a>
+	</div>
+	</p>
+	<hr>
+
+	<nav>
+		<ul>
+			<li><a class="current" href="/home">全て</a></li>
+			<li><a href="/ladies">レディース</a></li>
+			<li><a href="/mens">メンズ</a></li>
+			<li><a href="/all">本・音楽・ゲーム</a></li>
+		</ul>
+	</nav>
+
+	<!-- 商品一覧 -->
+	<div class="product-container">
+		<th:block th:if="${selectResult != null and selectResult.size() > 0}">
+			<th:block th:each="result : ${selectResult}">
+				<div class="product-item">
+					<img th:src="${'data:image/png;base64,' + result.photograph}"
+						alt="商品画像">
+					<h3 th:text="${result.product_name}"></h3>
+					<p th:text="${result.price} + '円'"></p>
+					<a th:href="@{'/product/details/' + ${result.item_number}}"
+						style="color: blue;">商品詳細</a><br> <a
+						th:href="@{'/chat/' + ${result.item_number}}" style="color: blue;">チャットルーム</a>
+
+				</div>
+			</th:block>
+		</th:block>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+form {
+	text-align: center;
+}
+
+.touroku_form_btm {
+	padding: 10px 0;
+	background-color: #F7F7F7;
+	margin: 10px 0;
+}
+
+input {
+	width: 200px;
+	padding: 3px;
+	margin: 5px 0;
+}
+
+.centering_parent {
+	padding: 100px; /* 余白指定 */
+	text-align: center; /* 中央寄せ */
+	height: 20px; /* 高さ指定 */
+	font-weight: bold; /* 太さ指定 */
+	font-size: 25px; /* 文字サイズ指定 */
+}

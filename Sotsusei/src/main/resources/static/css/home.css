@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+html, body, h1, h2, p, main, header, ul, li, footer, section {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.float_search {
+	float: left; /* 横並びにする */
+	margin-left: 100px; /* 要素と要素の間を開ける */
+	margin-top: 15px; /* 要素と要素の間を開ける */
+	padding: 10px; /* 余白指定 */
+}
+
+.float_icon {
+	float: left; /* 横並びにする */
+	margin-left: 500px; /* 要素と要素の間を開ける */
+	margin-top: 5px;
+	padding: 10px; /* 余白指定 */
+}
+
+.float_name {
+	float: left; /* 横並びにする */
+	margin-top: 15px;
+	font-size: 30px; /* 文字サイズ指定 */
+	text-decoration: underline;
+}
+
+.float_listing {
+	float: left; /* 横並びにする */
+	margin-top: 15px;
+	margin-left: 45px; /* 要素と要素の間を開ける */
+	font-size: 30px;
+	border-radius: 15px;
+	background-color: red;
+}
+
+a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+hr {
+	clear: both;
+}
+
+nav {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+nav ul li {
+	background: #ffd399;
+	list-style-type: none;
+	float: left;
+	width: 25%;
+	text-align: center;
+	line-height: 40px;
+	color: #df9;
+}
+
+nav a {
+	text-decoration: none;
+	color: #333;
+}
+
+.product-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 20px;
+}
+
+.product-item {
+	width: calc(16.6667% - 10px); /* 3列に配置するための幅を設定（マージンを考慮） */
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: center; /* 中央揃え */
+}
+
+.product-item img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 10px; /* 画像とテキストの間に余白を追加 */
+}
+
+.product-item h3 {
+	margin-top: 0;
+	color: #333; /* 商品名のテキストカラー */
+}
+
+.product-item p {
+	color: #666;
+	margin: 0; /* 余白を削除 */
+}

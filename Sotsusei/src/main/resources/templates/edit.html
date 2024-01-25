@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,Initial-scale=1.0">
+<title>商品編集</title>
+
+<style>
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+form {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 400px; /* Adjust the max-width as needed */
+	width: 100%;
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+input, select, textarea {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 16px;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #45a049;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+	width: 100%;
+}
+
+button:hover {
+	background-color: #128c7e;
+}
+
+#newPhotograph {
+	margin-bottom: 16px;
+}
+</style>
+</head>
+
+<body>
+
+	<form th:action="@{'/update/' + ${item_number}}" method="post">
+		<!-- Thymeleaf を使用してモデル属性をバインドします -->
+		<label for="productName">商品名:</label> <input type="text"
+			id="productName" name="productName"
+			th:value="${product['product_name']}" required> <label
+			for="category">カテゴリ:</label> <select id="category" name="category"
+			required>
+			<option value="" disabled selected>選択してください</option>
+			<option th:each="cat : ${categories}" th:value="${cat}"
+				th:text="${cat}" th:selected="${product['category'] == cat}"></option>
+		</select> <label for="price">価格:</label> <input type="number" id="price"
+			name="price" th:value="${product['price']}" required> <label
+			for="productCondition">商品の状態:</label> <select id="productCondition"
+			name="productCondition" required>
+			<option value="" disabled selected>選択してください</option>
+			<option th:each="condition : ${productConditions}"
+				th:value="${condition}" th:text="${condition}"
+				th:selected="${product['product_condition'] == condition}"></option>
+		</select> <label for="description">商品の説明:</label>
+		<textarea id="description" name="description" required
+			th:text="${product['description']}"></textarea>
+
+		<label for="newPhotograph">新しい写真の選択:</label> <input type="file"
+			id="newPhotograph" name="photograph" required>
+
+		<button type="submit">更新</button>
+	</form>
+</body>
+
+</html>

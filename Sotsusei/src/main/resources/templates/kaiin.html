@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+<link rel="stylesheet" type="text/css" href="/css/kaiin.css/">
+</head>
+<body>
+	<form th:action="@{/kaiin}" method="POST">
+
+
+		<h1>会員登録画面</h1>
+		<p>ID、パスワード、名前をご入力の上、「登録」ボタンをクリックしてください。</p>
+
+		<div class="touroku_form_btm">
+			<input type="id" name="id" placeholder="IDを登録してください"><br>
+			<input type="password" name="pass" placeholder="パスワードを登録してください"><br>
+			<input type="name" name="name" placeholder="名前を登録してください">
+		</div>
+		<button type="submit">登録</button>
+
+	</form>
+
+</body>
+</html>

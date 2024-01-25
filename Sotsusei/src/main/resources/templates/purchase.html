@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	margin: 20px;
+}
+
+.product-info {
+	text-align: center;
+	padding-right: 20px;
+}
+
+.product-info img {
+	max-width: 100%;
+	height: auto;
+}
+
+.price-info {
+	text-align: left;
+}
+
+.price {
+	font-size: 24px;
+	color: green;
+	margin-bottom: 10px;
+}
+
+.buy-button {
+	padding: 12px 20px;
+	background-color: blue;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+	<title>購入の確認</title>
+	<h1>購入の確認</h1>
+	<hr>
+	<form action="/purchase" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="item_number"
+			th:value="${productDetails.item_number}" />
+		<div class="container">
+			<div class="product-info">
+				<img
+					th:src="${'data:image/png;base64,' + productDetails.photograph}"
+					alt="商品画像">
+			</div>
+			<div class="price-info">
+				<p th:text="${productDetails.product_name}"></p>
+				<hr>
+				<div class="price" th:text="${productDetails.price} + '円'"></div>
+				<button type="submit" class="buy-button">購入する</button>
+			</div>
+		</div>
+	</form>
+
+</body>
+
+</html>

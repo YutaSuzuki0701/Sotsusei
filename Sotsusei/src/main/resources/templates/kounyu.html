@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ショッピングカート</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>商品一覧</h2>
+
+    <div class="product">
+      <img src="product1.jpg" alt="商品1">
+      <h3>商品1</h3>
+      <p>価格: $20</p>
+      <button onclick="addToCart(1)">カートに追加</button>
+    </div>
+
+    <div class="product">
+      <img src="product2.jpg" alt="商品2">
+      <h3>商品2</h3>
+      <p>価格: $30</p>
+      <button onclick="addToCart(2)">カートに追加</button>
+    </div>
+
+    <!-- カートの内容 -->
+    <div class="cart">
+      <h2>ショッピングカート</h2>
+      <ul id="cartItems">
+        <!-- カートアイテムが追加される -->
+      </ul>
+      <p id="totalPrice">合計: $0</p>
+      <button onclick="checkout()">購入する</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
