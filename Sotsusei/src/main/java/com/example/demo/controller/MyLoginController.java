@@ -20,7 +20,7 @@ public class MyLoginController {
 
 	//最初のページ
 	@RequestMapping(path = "/mylogin", method = RequestMethod.GET)
-	public String kadaiLogin() {
+	public String Login() {
 		return "mylogin";
 	}
 

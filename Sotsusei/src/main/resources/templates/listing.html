@@ -102,36 +102,54 @@ button {
 		<textarea id="description" name="description" required></textarea>
 		<label for="photo">写真アップロード:</label> <input type="file" name="image" />
 		<button type="submit">
+			<label for="ai_determined_Price">あなたが販売したい価格:</label> <input
+				type="number" id="ai_determined_price" name="ai_determined_price"
+				required>
 			<div class="Button2">出品する</div>
 		</button>
 	</form>
 	<div class="price-determination-container">
 		<label>価格判別をしますか？</label>
 
-		<button onclick="determinePrice()">
+		<button onclick="sendDataToDjango()">
 			<div class="Button1">はい(AIによる価格判別)</div>
 		</button>
 	</div>
 
-	<script>
-		function determinePrice() {
-			var enteredPrice = document.getElementById('price').value;
+<script>
+    function sendDataToDjango() {
+        var enteredPrice = document.getElementById('price').value;
+        var enteredCondition = document.getElementById('condition').value;
 
-			// Send AJAX request to the server
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', '/determinePrice?enteredPrice=' + enteredPrice,
-					true);
+        // JSONデータとして送信するオブジェクトを作成
+        var requestData = {
+            enteredPrice: enteredPrice,
+            enteredCondition: enteredCondition
+        };
 
-			xhr.onload = function() {
-				if (xhr.status == 200) {
-					// Update the AI-determined price input field
-					document.getElementById('price').value = xhr.responseText;
-				}
-			};
+        // Djangoに対するAJAXリクエスト
+        fetch('/callDjangoApi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCSRFToken() // CSRFトークンをヘッダーに含める
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // AIによって決定された価格の入力フィールドを更新
+            document.getElementById('ai_determined_price').value = data.ai_determined_price;
+        })
+        .catch(error => console.error('Error:', error));
+    }
 
-			xhr.send();
-		}
-	</script>
+    // CSRFトークンをクッキーから取得する関数
+    function getCSRFToken() {
+        var csrfCookie = document.cookie.match(/csrftoken=([\w-]+)/);
+        return csrfCookie ? csrfCookie[1] : null;
+    }
+</script>
 
 </body>
 </html>
